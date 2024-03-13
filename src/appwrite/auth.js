@@ -60,7 +60,7 @@ class AuthService {
         try {
             return await this.account.get();
         } catch (error) {
-            console.log(" 😢 Appwrite service :: getCurrentUSer :: error ", error)
+            console.log("Error is Inside GetUser : ", error)
         }
 
         // if user does not exist

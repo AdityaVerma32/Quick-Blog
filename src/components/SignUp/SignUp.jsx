@@ -15,7 +15,7 @@ function SignUp() {
     // Register - The register function is used to register input fields within the form. This registration process enables the library to track changes in form inputs and manage their values.
     // The handleSubmit function is used to handle form submissions. You typically pass it a callback function that contains the logic to execute when the form is submitted.
     // bout hi bekar sa syntax ha 😢 par jo hai so hai kya karein!
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, formState: { errors } } = useForm()
 
     const create = async (data) => {
         setError("")
@@ -77,6 +77,7 @@ function SignUp() {
                                 }
                             })}
                         />
+                        {errors.email && <p>Enter a Valid Email</p>}
                         {/* Input password */}
                         <Input
                             label="Password: "
@@ -84,8 +85,12 @@ function SignUp() {
                             placeholder="Enter your password"
                             {...register("password", {
                                 required: true,
+                                validate: {
+                                    matchPattern: (value) => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(value) || "Password must be at least 8 characters long"
+                                }
                             })}
                         />
+                        {errors.password && <p>Please Enter a valid Password (Minimum length 8, An UpperCase, A LowerCase, A Digit)</p>}
                         {/* Submit button */}
                         <Button
                             type="Submit"
