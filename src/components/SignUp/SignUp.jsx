@@ -86,7 +86,7 @@ function SignUp() {
                             {...register("password", {
                                 required: true,
                                 validate: {
-                                    matchPattern: (value) => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(value) || "Password must be at least 8 characters long"
+                                    matchPattern: (value) => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(value) || "Password must be at least 8 characters long"
                                 }
                             })}
                         />
