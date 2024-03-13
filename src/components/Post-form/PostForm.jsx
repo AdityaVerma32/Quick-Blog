@@ -71,9 +71,8 @@ function PostForm({ post }) {
 
       if (file) {
         const fileId = file.$id;
-        console.log("Here right now 😊")
-        data.featuredimage = fileId;
-        const dbPost = await appwriteService.createPost({ ...data, userId: userData.$id })
+        console.log("Here right now 😊 : ", fileId)
+        const dbPost = await appwriteService.createPost({ ...data, featuredimage: fileId, userId: userData.$id })
         if (dbPost) {
           navigate(`/post/${dbPost.$id}`)
         }
